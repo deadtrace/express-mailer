@@ -1,9 +1,11 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.post("/send-email", (req, res) => {
   const transporter = nodemailer.createTransport({
