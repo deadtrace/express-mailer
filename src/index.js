@@ -7,6 +7,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.options("/send-email", function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.end();
+});
 app.post("/send-email", (req, res) => {
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
